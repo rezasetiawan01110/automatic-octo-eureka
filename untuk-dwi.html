@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login Dulu Ya</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand&family=Great+Vibes&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #ffe6f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .login-box {
+      background-color: #fff0f5;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      width: 90%;
+      max-width: 350px;
+      text-align: center;
+    }
+
+    .login-box h2 {
+      margin-bottom: 20px;
+      color: #cc3366;
+    }
+
+    input[type="text"], input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    button {
+      background-color: #ff99bb;
+      color: white;
+      padding: 12px;
+      width: 100%;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .error {
+      color: red;
+      margin-top: 10px;
+    }
+
+    /* Styling untuk halaman ucapan */
+    .hidden {
+      display: none;
+    }
+
+    .slider-container {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transition: transform 0.5s ease;
+    }
+
+    .slide {
+      width: 100%;
+      height: 100%;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.9);
+      border-radius: 15px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      opacity: 0;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    .slide h1 {
+      font-family: 'Great Vibes', cursive;
+      font-size: 40px;
+      color: #cc3366;
+      opacity: 0;
+      animation: fadeInTitle 2s ease forwards;
+    }
+
+    .slide p {
+      font-size: 18px;
+      color: #333;
+      line-height: 1.8;
+      margin-top: 15px;
+      opacity: 0;
+      animation: fadeInText 1.5s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInTitle {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInText {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .nav {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      z-index: 10;
+    }
+
+    .nav button {
+      background-color: #cc3366;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 50px;
+      font-size: 18px;
+      cursor: pointer;
+      margin: 0 10px;
+      opacity: 0.8;
+    }
+
+    .nav button:hover {
+      opacity: 1;
+    }
+
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Login Page -->
+  <div class="login-box" id="login-page">
+    <h2>Login Dulu Ya</h2>
+    <input type="text" id="username" placeholder="ID">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="login()">Masuk</button>
+    <div class="error" id="error-msg"></div>
+  </div>
+
+  <!-- Ucapan Page -->
+  <div class="hidden" id="ucapan-page">
+    <audio autoplay loop>
+      <source src="https://dl.sndup.net/6z3t/BGM-Mellow-Piano.mp3" type="audio/mp3">
+    </audio>
+
+    <div class="nav">
+      <button onclick="prevSlide()">←</button>
+      <button onclick="nextSlide()">→</button>
+    </div>
+
+    <div class="slider-container" id="slider">
+      <div class="slide"><h1>Selamat Ulang Tahun , Dwi Lestari .</h1></div>
+      <div class="slide"><p>15 April , hari di mana dunia diberikan satu lagi cahaya paling lembutnya . Sebuah cahaya yang tak hanya memberi terang , tetapi juga memberi harapan dan kehangatan , dan itu adalah kamu , Dwi Lestari .</p></div>
+      <div class="slide"><p>Dwi Lestari , Hari ini kamu genap berusia 20 tahun . Selamat ulang tahun ! Sebuah usia yang penuh dengan kesempatan baru , penuh dengan harapan dan doa . Semoga setiap detik hidupmu penuh makna , semoga setiap langkahmu dipenuhi kebahagiaan , dan semoga hatimu selalu lapang , tidak pernah kosong . Aku berharap kamu selalu dikelilingi cinta yang tidak hanya datang , tetapi juga tinggal—cinta yang nyata , yang membawa kedamaian di setiap langkah hidupmu .</p></div>
+      <div class="slide"><p>Dwi Lestari , di usia barumu ini , aku ingin kamu semakin dekat dengan segala hal yang kamu impikan . Semoga impian-impian itu menjadi kenyataan , dan semoga kamu dikelilingi oleh orang-orang yang benar-benar peduli , yang selalu ada bukan hanya saat senang , tapi juga saat dunia terasa berat</p></div>
+      <div class="slide"><p>Aku doakan segala hal baik buat kamu :</p></div>
+      <div class="slide"><p>Semoga kamu selalu dikelilingi cinta yang nggak cuma datang , tapi juga tinggal Semoga kamu dipertemukan dengan orang-orang yang ngerti kamu , nggak cuma dari senyummu... tapi juga dari diam kamu . Dan semoga kamu bahagia , bukan cuma di depan kamera , tapi juga di dalam hati .</p></div>
+      <div class="slide"><p>Usia 20 itu usia yang serba tanggung—dewasa , tapi kadang masih pengen dimanja . Dan kamu , Dwi Lestari , selalu punya cara buat kelihatan kuat , walaupun kadang lelah . Kamu layak dapet pelukan dan bisikan seperti ini , “Kamu udah sejauh ini . dan Aku bangga" .</p></div>
+      <div class="slide"><p>Semoga kamu selalu dikuatkan untuk menghadapi apapun yang ada di depanmu , meskipun kadang jalannya terjal dan tak mudah . Semoga kamu diberi kekuatan untuk tetap lembut di tengah kerasnya dunia ini , tetap menjadi diri sendiri yang penuh kasih , yang mampu memberi tanpa mengharapkan kembali . Semoga tawa yang kamu rasakan adalah tawa yang jujur , pelukan yang tulus , dan perhatian yang tidak setengah hati .</p></div>
+      <div class="slide"><p>Aku tahu , hari ini kamu pasti mendapat banyak ucapan ulang tahun . Tapi percayalah , ucapanku ini datang dari seseorang yang sangat mengingatmu . Mungkin sekarang aku hanya bisa melihatmu dari jauh , tapi aku masih ingat dengan jelas senyummu yang hangat, cara kamu tertawa yang bisa mengubah suasana , dan cara kamu membuat hari-hariku lebih berwarna .</p></div>
+      <div class="slide"><p>Dwi Lestari , Jika kamu bertanya apakah aku masih menunggu ? Jawabanku adalah iya . Aku masih di sini , tidak kemana-mana . Meski banyak orang yang mungkin datang mendekatimu sekarang , banyak yang mungkin lebih baik dariku , tidak satu pun dari mereka bisa membuatku menyerah . Aku tidak mencari bantuan siapa pun untuk membawamu kembali . Jika aku berbicara pada orang lain , itu hanya agar aku tidak meledak sendirian , agar aku tetap kuat . Karena sejatinya , yang aku inginkan adalah kamu kembali dengan keinginanmu sendiri , tanpa paksaan , tanpa dorongan . Hanya kalau kamu sudah siap .</p></div>
+      <div class="slide"><p>Aku tahu , kadang aku hanya membaca pesanmu tanpa memberikan balasan . Itu bukan karena aku tidak peduli , tapi karena aku takut jika balasanku malah membuatmu semakin menjauh . Aku takut kata-kataku salah dan membuat jarak di antara kita semakin lebar . Tapi meskipun aku diam , setiap kali notifikasi darimu muncul , itu adalah hal yang paling aku tunggu. Dan kamu tetap jadi satu-satunya orang yang aku harap kembali—bukan hanya dalam chat , tetapi kembali ke hatiku , kembali menjadi bagian dari hidupku .</p></div>
+      <div class="slide"><p>Namun hari ini , ini bukan tentang aku . Ini adalah hari kamu , Dwi Lestari , Hari di mana dunia merayakan kehadiranmu , hari di mana kamu diberi kesempatan lagi untuk menjadi lebih kuat , lebih hebat , dan lebih bahagia . Ini adalah hari yang penuh dengan potensi , harapan , dan kesempatan baru .</p></div>
+      <div class="slide"><p>Dwi Lestari . Terima kasih atas semua kenangan indah yang pernah kita bagi . Terima kasih karena pernah hadir di hidupku dan memberi warna yang aku rasa hingga hari ini . Jika suatu hari nanti kamu kembali—mungkin kembali dengan langkah yang lebih pasti—aku akan tetap ada di tempat yang sama , menunggu tanpa suara, tetap setia tanpa ragu . Tidak akan ada yang berubah , kecuali mungkin waktu yang sudah berjalan .</p></div>
+      <div class="slide"><p>Dan jika akhirnya kamu memutuskan untuk berjalan dengan arah yang berbeda , aku hanya bisa berharap agar hidupmu penuh dengan kebahagiaan. Aku akan selalu mendoakan yang terbaik untukmu , Dwi Lestari . Karena meskipun kita tak lagi bersama , hatiku tetap di sini , selalu menyimpan tempat untukmu .</p></div>
+      <div class="slide"><p>Dwi Lestari . Kamu adalah seseorang yang baik , kuat , dan pantas mendapatkan semua kebahagiaan yang dunia ini bisa beri . Semoga semesta selalu melindungimu , menyayangimu , dan memberikan yang terbaik untukmu .</p></div>
+      <div class="slide"><p>Dan jika suatu saat nanti kamu merasa jauh , ketahuilah bahwa ada seseorang yang tetap menunggu di tempat yang sama , dengan hati yang setia . Tidak terburu-buru . Pelan-pelan saja . Tidak ada yang perlu dipaksakan .</p></div>
+    </div>
+  </div>
+
+  <script>
+    function login() {
+      const user = document.getElementById("username").value;
+      const pass = document.getElementById("password").value;
+      const errorMsg = document.getElementById("error-msg");
+
+      if (user === "dwi lestari" && pass === "gelato078") {
+        document.getElementById("login-page").style.display = "none";
+        document.getElementById("ucapan-page").classList.remove("hidden");
+        showSlide(0);
+      } else {
+        errorMsg.textContent = "ID atau Password salah , coba lagi ya .";
+      }
+    }
+
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.slide');
+
+    function showSlide(index) {
+      slides.forEach(slide => slide.style.display = 'none');
+      if(index < 0) index = 0;
+      if(index >= slides.length) index = slides.length - 1;
+      slides[index].style.display = 'flex';
+      currentSlide = index;
+    }
+
+    function nextSlide() {
+      if(currentSlide < slides.length - 1) showSlide(currentSlide + 1);
+    }
+
+    function prevSlide() {
+      if(currentSlide > 0) showSlide(currentSlide - 1);
+    }
+  </script>
+
+</body>
+</html>
